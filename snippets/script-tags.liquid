@@ -1,0 +1,111 @@
+<script>
+  window.addEventListener("load", function() {
+    window.__sfWindowLoaded = true
+  })
+</script>
+
+<script>
+{%- if template.name == 'index' -%}
+  function __lightOrDark(color) {
+    var lightness = Number((color.match(/^hsl.*,(.*)%\)/) || ['', '100'])[1].trim());
+    return lightness > 50 ? 'light' : 'dark';
+  }
+  __detectBgSections = function () {
+    try {
+      var sections = document.querySelectorAll('[data-bg]')
+      for (var i = 0; i < sections.length; i++) {
+        var section = sections[i]
+        var lightness = __lightOrDark(section.dataset.bg)
+        section.classList.add('bg-' + lightness)
+      }
+    } catch (error) {
+      console.error("Failed to __detectBgSections.", error)
+    }
+  }
+  __detectBgSections()
+{%- endif -%}
+
+{%- if request.design_mode -%}
+window.addEventListener('shopify:section:load', function (e) {
+  {%- if template.name == 'index' -%}
+    __detectBgSections()
+  {%- endif -%}
+})
+{%- endif -%}
+</script>
+<script>
+  if (!__isPSA) {
+    // _loadJS, loadScript
+    function __ls(src) {
+      const s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+    
+    __ls("{{ 'app.js' | asset_url }}")
+    __ls("{{ 'lazysizes.min.js' | asset_url }}")
+    __ls("{{ 'foxkit-app.min.js' | asset_url }}")
+  }
+</script>
+<script>
+  $(document).ready(function() {
+  if (window.location.href.indexOf("collections/men") > -1) {
+    var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-option-gender'). length) {
+        $('.boost-pfs-filter-option-gender').attr('style', 'display: none !important')
+        clearInterval(checkExist);
+      }
+    }, 100); 
+    
+  }else if(window.location.href.indexOf("collections/women") > -1){
+      var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-option-gender'). length) {
+        $('.boost-pfs-filter-option-gender').attr('style', 'display: none !important')
+        clearInterval(checkExist);
+      }
+    }, 100); 
+  }else if(window.location.href.indexOf("sunglasses") > 0){
+    var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-option-polarized'). length) {
+//           $('.boost-pfs-filter-option-polarized').attr('style', 'display: block !important')
+        clearInterval(checkExist);
+      }
+    }, 100);
+  }else if(window.location.href.indexOf("sun-glasses") > 0){
+    var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-option-polarized'). length) {
+//           $('.boost-pfs-filter-option-polarized').attr('style', 'display: block !important')
+        clearInterval(checkExist);
+      }
+    }, 100);
+  }else{
+    var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-option-polarized'). length) {
+        $('.boost-pfs-filter-option-polarized').attr('style', 'display: none !important')
+        clearInterval(checkExist);
+      }
+    }, 100);
+  }
+});
+  var checkExist = setInterval(function() {
+      if ($('.boost-pfs-filter-tree-h-wrapper'). length) {
+        $('div#toolbar-desktop .boost-pfs-container-default.boost-pfs-filter-default-toolbar-inner').prepend($('.boost-pfs-filter-tree-h-wrapper .boost-pfs-container-default').html())
+        setTimeout(function(){ 
+          $('.boost-pfs-filter-options-wrapper').prepend('<span class="filter_cst">FILTER BY</span>')
+          $('.boost-pfs-filter-toolbar-item.boost-pfs-filter-custom-sorting.boost-pfs-filter-top-sorting').prepend('<span class="filter_cst">SORT BY</span>')
+         }, 2000);
+        clearInterval(checkExist);
+      }
+    }, 100);
+  setInterval(function() {
+      if ($('.boost-pfs-filter-tree-h-wrapper'). length) {
+        setTimeout(function(){ 
+          if($('.filter_cst').length){}else{
+          $('.boost-pfs-filter-options-wrapper').prepend('<span class="filter_cst">FILTER BY</span>')
+          $('.boost-pfs-filter-toolbar-item.boost-pfs-filter-custom-sorting.boost-pfs-filter-top-sorting').prepend('<span class="filter_cst">SORT BY</span>')
+          }
+         }, 2000);
+      }
+    }, 100);
+</script>

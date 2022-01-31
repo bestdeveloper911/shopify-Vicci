@@ -1,0 +1,2442 @@
+{%- liquid
+	assign boost_translations = shop.metafields.boostpfs-settings.labelTranslations
+  assign boost_settings = shop.metafields.bc-sf-filter.settings
+	assign boost_in_collection_search = boost_settings | split: 'enableCollectionSearch":' | last | split: ',"' | first | strip 
+	assign current_locale = request.locale.iso_code
+	assign primary_locale = current_locale
+	for locale in shop.published_locales
+		if locale.primary
+			assign primary_locale = locale.iso_code
+			break
+		endif
+	endfor
+	assign label_toolbar_viewas = boost_translations[current_locale].defaultTheme.toolbarViewAs | default:  boost_translations[primary_locale].defaultTheme.toolbarViewAs | escape
+	assign label_items_with_count_one = boost_translations[current_locale].defaultTheme.toolbarProduct | default:  boost_translations[primary_locale].defaultTheme.toolbarProduct | escape
+	assign label_items_with_count_other = boost_translations[current_locale].defaultTheme.toolbarProducts | default:  boost_translations[primary_locale].defaultTheme.toolbarProducts | escape
+	assign label_sale = boost_translations[current_locale].defaultTheme.productItemSale | default:  boost_translations[primary_locale].defaultTheme.productItemSale | escape
+	assign label_soldout = boost_translations[current_locale].defaultTheme.productItemSoldOut | default:  boost_translations[primary_locale].defaultTheme.productItemSoldOut | escape
+	assign label_from = boost_translations[current_locale].defaultTheme.productItemFrom | default:  boost_translations[primary_locale].defaultTheme.productItemFrom | escape
+  assign label_sale_percent = 'percent' | escape
+
+	assign layout_type = section.settings.layout_type | default: 'box'
+  assign show_collection_image = section.settings.show_collection_image
+  assign show_collection_des = section.settings.show_collection_des
+  assign collection_header_bg = section.settings.collection_header_bg | default: ''
+  assign collection_header_text = section.settings.collection_header_text | default: ''
+
+  assign switch_layout_filter = section.settings.switch_layout_filter
+  assign filter_layout = section.settings.filter_layout
+
+	assign enable_filter_sticky_d = section.settings.enable_filter_sticky_d
+	assign enable_filter_sticky_m = section.settings.enable_filter_sticky_m
+	
+	assign show_view_as = section.settings.show_view_as
+	assign show_product_count = section.settings.show_product_count
+	assign show_sort_by = section.settings.show_sort_by
+	assign show_view_as_m = section.settings.show_view_as_m
+	assign show_product_count_m = section.settings.show_product_count_m
+	assign show_sort_by_m = section.settings.show_sort_by_m
+	assign view_as_type = section.settings.view_as_type | default: 'view_as_type_grid_list'
+
+  assign product_item_type = section.settings.product_item_type | default: 'grid'
+  assign product_item_layout = section.settings.product_item_layout | default: 'no-border'
+  assign text_alignment = section.settings.text_alignment | default: 'left'
+	assign show_vendor = section.settings.show_vendor
+	assign show_price = section.settings.show_price
+  assign show_product_review = section.settings.show_product_review
+  assign show_detail_when_hover = section.settings.show_detail_when_hover
+  assign active_image_swap = section.settings.active_image_swap
+
+  assign aspect_ratio = section.settings.aspect_ratio | default: 'auto'
+	assign aspect_ratio_other = section.settings.aspect_ratio_other | default: ''
+	assign product_img_crop = section.settings.product_img_crop | default: 'none'
+  
+  assign products_per_page = section.settings.products_per_page | default: 20
+  assign products_per_row = section.settings.products_per_row | default: 4
+	assign products_per_row_m = section.settings.products_per_row_m | default: 2
+
+  assign product_title_color = section.settings.product_title_color
+  assign product_title_font = section.settings.product_title_font
+  assign product_title_size = section.settings.product_title_size
+  assign product_title_transform = section.settings.product_title_transform
+
+  assign product_vendor_color = section.settings.product_vendor_color
+  assign product_vendor_font = section.settings.product_vendor_font
+  assign product_vendor_size = section.settings.product_vendor_size
+  assign product_vendor_transform = section.settings.product_vendor_transform
+
+  assign product_price_color = section.settings.product_price_color
+  assign product_old_price_color = section.settings.product_old_price_color
+  assign product_sale_price_color = section.settings.product_sale_price_color
+  assign product_price_font = section.settings.product_price_font
+  assign product_price_size = section.settings.product_price_size
+
+  assign product_des_color = section.settings.product_des_color
+  assign product_des_font = section.settings.product_des_font
+  assign product_des_size = section.settings.product_des_size
+
+  assign swatch_enable = section.settings.swatch_enable
+  assign show_swatch_tooltip = section.settings.show_swatch_tooltip
+  assign swatch_change_img = section.settings.swatch_change_img | default: 'hover'
+  assign swatch_by_color_apply = section.settings.swatch_by_color_apply
+  assign swatch_by_color_shape = section.settings.swatch_by_color_shape | default: 'circle'
+  assign swatch_by_img_apply = section.settings.swatch_by_img_apply
+  assign swatch_by_img_shape = section.settings.swatch_by_img_shape | default: 'circle'
+  assign swatch_by_pro_img_apply = section.settings.swatch_by_pro_img_apply
+  assign swatch_by_pro_img_shape = section.settings.swatch_by_pro_img_shape | default: 'circle'
+  assign swatch_by_text_apply = section.settings.swatch_by_text_apply
+  assign swatch_by_text_shape = section.settings.swatch_by_text_shape | default: 'square'
+  assign swatch_by_text_bg = section.settings.swatch_by_text_bg
+  assign swatch_by_text_color = section.settings.swatch_by_text_color
+  assign swatch_by_text_border = section.settings.swatch_by_text_border
+
+  assign label_position = section.settings.label_position | default: 'top_left'
+  assign label_type = section.settings.label_type | default: 'rectangle'
+  assign sale_label_enable = section.settings.sale_label_enable
+  assign sale_label_display = section.settings.sale_label_display | default: 'text'
+  assign sale_label_bg = section.settings.sale_label_bg
+  assign sale_label_text = section.settings.sale_label_text
+  assign sale_label_img = section.settings.sale_label_img
+
+	assign sold_out_enable = section.settings.sold_out_enable
+  assign sold_out_display = section.settings.sold_out_display | default: 'text'
+  assign sold_out_bg = section.settings.sold_out_bg
+  assign sold_out_text = section.settings.sold_out_text
+  assign sold_out_img = section.settings.sold_out_img
+	
+  assign tag_label_enable = section.settings.tag_label_enable
+  assign tag_label_bg = section.settings.tag_label_bg
+  assign tag_label_text = section.settings.tag_label_text
+-%}
+
+{% capture products_item_settings %}
+	{% if aspect_ratio == 'auto' %}boost-pfs-filter-product-item-equal-height-auto {% endif %} boost-pfs-filter-product-item-label-type-{{ label_type }} boost-pfs-filter-product-item-show-details-{{ show_detail_when_hover }} boost-pfs-filter-product-item-layout-{{ product_item_layout }} boost-pfs-filter-product-item-label-{{ label_position }}  boost-pfs-filter-product-item-text-alignment-{{ text_alignment }}  
+{% endcapture %}
+
+{%- paginate collection.products by products_per_page -%}
+
+<style>
+{% if section.settings.collection_image_text_color != blank %}
+.boost-pfs-filter-collection-header-wrapper.boost-pfs-filter-collection-has-image .boost-pfs-filter-collection-description,
+.boost-pfs-filter-collection-header-wrapper.boost-pfs-filter-collection-has-image .boost-pfs-filter-collection-description p,
+.boost-pfs-filter-collection-header-wrapper.boost-pfs-filter-collection-has-image .boost-pfs-filter-collection-header {
+  color: {{ section.settings.collection_image_text_color }};
+}
+{% endif %}
+
+{% if section.settings.product_item_title_color != blank or section.settings.product_item_title_font_size != blank  %}
+.boost-pfs-filter-product-item-title {
+  {% if section.settings.product_item_title_color != blank %}
+    color: {{ section.settings.product_item_title_color }};
+  {% endif %}
+
+  {% if section.settings.product_item_title_font != blank %}
+  {% assign product_item_title_font = section.settings.product_item_title_font %}
+    font-family: "{{ product_item_title_font.family }}", {{ product_item_title_font.fallback_families }};
+    font-weight: {{ product_item_title_font.weight }};
+    font-style: {{ product_item_title_font.style }};
+  {% endif %}
+
+  {% if section.settings.product_item_title_font_size != blank %}
+    font-size: {{ section.settings.product_item_title_font_size }}px;
+  {% endif %}
+}
+{% endif %}
+
+{% if section.settings.product_item_vendor_color != blank or section.settings.product_item_vendor_font_size != blank  %}
+.boost-pfs-filter-product-item-vendor {
+  {% if section.settings.product_item_vendor_color != blank %}
+    color: {{ section.settings.product_item_title_color }};
+  {% endif %}
+
+  {% if section.settings.product_item_vendor_font != blank %}
+    {% assign product_item_vendor_font = section.settings.product_item_vendor_font %}
+    font-family: "{{ product_item_vendor_font.family }}", {{ product_item_vendor_font.fallback_families }};
+    font-weight: {{ product_item_vendor_font.weight }};
+    font-style: {{ product_item_vendor_font.style }};
+  {% endif %}
+
+  {% if section.settings.product_item_vendor_font_size != blank %}
+    font-size: {{ section.settings.product_item_vendor_font_size }}px;
+  {% endif %}
+}
+{% endif %}
+{% if section.settings.product_item_price_color != blank or section.settings.product_item_price_font_size != blank  %}
+.boost-pfs-filter-product-item-price {
+  {% if section.settings.product_item_price_color != blank %}
+    color: {{ section.settings.product_item_price_color }};
+  {% endif %}
+
+  {% if section.settings.product_item_price_font != blank %}
+    {% assign product_item_price_font = section.settings.product_item_price_font %}
+    font-family: "{{ product_item_price_font.family }}", {{ product_item_price_font.fallback_families }};
+    font-weight: {{ product_item_price_font.weight }};
+    font-style: {{ product_item_price_font.style }};
+  {% endif %}
+
+  {% if section.settings.product_item_price_font_size != blank %}
+    font-size: {{ section.settings.product_item_price_font_size }}px;
+  {% endif %}
+}
+{% endif %}
+
+{% if section.settings.product_item_old_price_color != blank %}
+.boost-pfs-filter-product-item-price s {
+    color: {{ section.settings.product_item_old_price_color }};
+}
+{% endif %}
+
+{% if section.settings.product_item_sale_price_color != blank %}
+.boost-pfs-filter-product-item-price .boost-pfs-filter-product-item-sale-price {
+  color: {{ section.settings.product_item_sale_price_color }};
+}
+{% endif %}
+
+{% if section.settings.product_item_des_color != blank or section.settings.product_item_des_font_size != blank %}
+.boost-pfs-filter-product-item-list .boost-pfs-filter-des {
+  {% if section.settings.product_item_des_color != blank %}
+    color: {{ section.settings.product_item_des_color }};
+  {% endif %}
+
+  {% if section.settings.product_item_des_font != blank %}
+    {% assign product_item_des_font = section.settings.product_item_des_font %}
+    font-family: "{{ product_item_des_font.family }}", {{ product_item_des_font.fallback_families }};
+    font-weight: {{ product_item_des_font.weight }};
+    font-style: {{ product_item_des_font.style }};
+  {% endif %}
+
+  {% if section.settings.product_item_des_font_size != blank %}
+    font-size: {{ section.settings.product_item_des_font_size }}px;
+  {% endif %}
+}
+{% endif %}
+
+{% if section.settings.product_item_label_bg_color != blank or section.settings.product_item_label_text_color != blank %}
+.boost-pfs-filter-product-item-label .sale,
+.boost-pfs-filter-product-item-label .tag {
+  color: #ff0;
+  {% if section.settings.product_item_label_bg_color != blank %}
+  background-color: {{ section.settings.product_item_label_bg_color }};
+  {% endif %}
+
+  {% if section.settings.product_item_label_text_color != blank %}
+  color: {{ section.settings.product_item_label_text_color }};
+  {% endif %}
+}
+{% endif %}
+</style>
+
+<script>console.log('HANDLE', {{ collection.handle | json }})</script>
+
+<!-- Women's optical -->
+{% if collection.handle == 'womens-optical' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-women-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+    
+  	.on-mobile {
+      position: absolute;
+      margin-top: 39vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-women-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper h1{
+      font-weight:400;
+      font-size:20px;
+    }
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  
+</style>
+{% endif %}
+
+
+<!-- All eyeglasses -->
+{% if collection.handle == 'eyeglasses' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-both-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: 0px -80px;
+      position: relative; */
+    }
+    .boost-pfs-filter-collection-header-wrapper h1{
+      font-weight:400;
+      font-size:20px;
+    }
+  	.on-mobile {
+      position: absolute;
+      margin-top: 285px;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-both-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+</style>
+{% endif %}
+
+
+<!-- Men's optical -->
+{% if collection.handle == 'mens-optical-1' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  
+  
+  
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-men-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+      margin-top: 39vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/optical-men-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: 0;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+ 
+</style>
+{% endif %}
+
+<!-- Men's sun glasses -->
+{% if collection.handle == 'mens-sunglasses' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-men-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+    .boost-pfs-filter-collection-header-wrapper h1{
+      font-weight:400;
+      font-size:20px;
+    }
+  	.on-mobile {
+      position: absolute;
+      margin-top: 285px;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-men-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+</style>
+{% endif %}
+
+
+
+<!-- All Sun Glasses -->
+{% if collection.handle == 'sunglasses' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-both-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: 0px -80px;
+      position: relative; */
+    }
+    .boost-pfs-filter-collection-header-wrapper h1{
+      font-weight:400;
+      font-size:20px;
+    }
+  	.on-mobile {
+      position: absolute;
+      margin-top: 285px;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-both-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+</style>
+{% endif %}
+
+
+
+<!-- Women's sun glasses -->
+{% if collection.handle == 'womens-sunglasses' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-women-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/sun-women-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+
+
+<!-- Women's BLue Light -->
+{% if collection.handle == 'women-blue-light' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/bluelight-women-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: 0 0px;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/bluelight-women-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+
+
+
+<!-- All bluelight -->
+{% if collection.handle == 'blue-light' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+  @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/Bluelight-both-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: 0px -80px;
+      position: relative; */
+    }
+    .boost-pfs-filter-collection-header-wrapper h1{
+      font-weight:400;
+      font-size:20px;
+    }
+  	.on-mobile {
+      position: absolute;
+      margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/Bluelight-both-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+</style>
+{% endif %}
+
+
+
+
+
+<!-- Men's BLue Light -->
+{% if collection.handle == 'men-blue-light' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/bluelight-men-mobile.jpg?v=1632072150') !important; */
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	/* background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/bluelight-men-mobile.jpg?v=1632072150') !important; */
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+
+<!-- Fall2021 collection - Optical -->
+{% if collection.handle == 'new-collection-optical' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  .boost-pfs-filter-collection-header-wrapper{
+    /* padding-bottom:100px !important; */
+  }
+    @media screen and (max-width:992px){
+    .boost-pfs-filter-collection-header-wrapper{
+    	/* padding-bottom: 30px !important; */
+    }
+  }
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/mobile_eye_new.jpg?v=1633551364') !important;
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+
+<!-- Fall2021 collection - Sunglasses -->
+{% if collection.handle == 'new-collection-sun-glasses' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  .boost-pfs-filter-collection-header-wrapper{
+    /* padding-top:19vw !important; */
+    /* padding-bottom:100px !important; */
+  }
+    @media screen and (max-width:992px){
+    .boost-pfs-filter-collection-header-wrapper{
+    	/* padding-bottom: 30px !important; */
+    }
+  }
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/mobile_sun_new.jpg?v=1633551364') !important;
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/mobile_sun_new.jpg?v=1633551364') !important;
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+<!-- Fall2021 collection - Bluelight -->
+{% if collection.handle == 'new-collection-blue-light' %}
+   <script>console.log({{ collection.handle | json }});</script>
+
+<style>
+  .boost-pfs-filter-collection-header-wrapper{
+    /* padding-top:19vw !important;
+    padding-bottom:100px !important; */
+  }
+  
+  @media screen and (max-width:992px){
+    .boost-pfs-filter-collection-header-wrapper{
+    	/* padding-bottom: 30px !important; */
+    }
+  }
+    @media screen and (max-width:768px){
+        .boost-pfs-filter-collection-image{
+    	background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/mobile_blue_light_new.jpg?v=1633551364') !important;
+    }
+    .boost-pfs-filter-collection-header-wrapper {
+      /* padding-bottom: 36vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 153px;
+      background-position: right;
+      position: relative; */
+    }
+      .boost-pfs-filter-collection-header-wrapper h1{
+        font-weight:400;
+        font-size:20px;
+      }
+    
+  	.on-mobile {
+      position: absolute;
+		margin-top: 38vw;
+      padding: 0 10px;
+     }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000}
+  }
+  
+  @media screen and (max-width:475px){
+    .boost-pfs-filter-collection-image{
+    	background-image: url('https://cdn.shopify.com/s/files/1/0440/3576/8475/files/mobile_blue_light_new.jpg?v=1633551364') !important;
+    }
+    
+    .boost-pfs-filter-collection-header-wrapper{
+      /* padding-bottom: 16vw !important;
+      padding-top: 30px !important;
+      margin-bottom: 157px;
+      background-position: right;
+      position: relative; */
+     }
+    
+    .on-mobile{
+      position: absolute;
+      margin-top: 80px;
+      padding: 0 10px;
+    }
+    
+    .on-mobile h1{color:#000}
+    .on-mobile .boost-pfs-filter-collection-description.rte{color:#000; margin-top:0;}
+  }
+  
+</style>
+{% endif %}
+
+
+{%- comment -%} COLLECTION HEADER {%- endcomment -%}
+
+<div class="collection--header">
+
+  <div class="boost-pfs-filter-collection-header-wrapper boost-pfs-filter-collection-image {% if section.settings.show_collection_image and collection.image %}boost-pfs-filter-collection-has-image{% endif %}" {% if section.settings.show_collection_image and collection.image %} style="background-image: url({{ collection.image | img_url: '1100x' }});padding-top: 0px !important;padding-bottom:{{ 100 | divided_by: collection.image.aspect_ratio }}% !important;" {% endif %}>
+    <div class="boost-pfs-container-default">
+      <div class="boost-pfs-section-header">
+        <h1 class="boost-pfs-filter-collection-header">
+          <span role="text">
+            {{ collection.title }}
+            
+          </span>
+        </h1>
+        {%- if section.settings.show_collection_des and collection.description != blank -%}
+          <div class="boost-pfs-filter-collection-description rte">
+            {{ collection.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    
+    
+    <div class="boost-pfs-section-header on-mobile">
+      <h1 class="boost-pfs-filter-collection-header">
+        <span role="text">
+          {{ collection.title }}
+        </span>
+      </h1>
+      {%- if section.settings.show_collection_des and collection.description != blank -%}
+      <div class="boost-pfs-filter-collection-description rte">
+        {{ collection.description }}
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+</div>
+
+{%- comment -%} END COLLECTION HEADER {%- endcomment -%}
+
+<div class="cb-tag-big-buttons">
+  {% for i in (1..6) %}
+    {% assign current_button_text = "tag_button_text_" | append: i %}
+    {% assign current_button_image = "tag_button_image_" | append: i %}
+    {% assign current_button_tag = "tag_button_text_tag_" | append: i %}
+    {% capture tag_button_wrapper %}
+      <div class="cb-tag-big-button">
+        <div class="cb-image-wrapper">
+          <img src="{{ section.settings[current_button_image] | img_url: 'master' }}" alt="">
+        </div>
+        <h6>{{section.settings[current_button_text]}}</h6>
+      </div>
+    {% endcapture %}
+
+    {% if current_tags contains section.settings[current_button_tag] %}
+      {{ tag_button_wrapper | link_to_remove_tag: section.settings[current_button_tag] }}
+    {% else %}
+      {{ tag_button_wrapper | link_to_add_tag: section.settings[current_button_tag] }}
+    {% endif %}
+  {% endfor %}
+</div>
+<style>
+  .cb-tag-big-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  /* margin-top: 50px; */
+  /* margin-bottom: 70px; */
+}
+
+.cb-tag-big-button {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  width: clamp(130px, 9vw, 190px);
+  padding: 29px 8px 20px 8px;
+  height: 100%;
+}
+
+.cb-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cb-image-wrapper img {
+  width: 100%;
+}
+
+.cb-tag-big-button h6 {
+  font-size: clamp(15px, .9vw, 18px);
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+  color: #4B4B4B;
+  margin-top: 1rem;
+}
+@media (max-width: 790px) {
+  .cb-tag-big-buttons a {
+    width: 30%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .cb-tag-big-button {
+    width: auto;
+
+    padding: 0 5px 10px 5px;
+  }
+
+  .cb-tag-big-buttons {
+    gap: 1rem 0;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .cb-tag-big-button h6 {
+    font-size: 12px;
+    margin: 0;
+  }
+}
+@media (max-width: 365px) {
+  .cb-tag-big-buttons {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cb-tag-big-buttons h6 {
+    font-size: 10px;
+  }
+}
+</style>
+{%- comment -%} TOOLBAR TOP MOBILE {%- endcomment -%}
+<div id="toolbar-mobile" class="boost-pfs-filter-toolbar-top-mobile">
+    <div class="boost-pfs-filter-top-sorting boost-pfs-filter-top-sorting-mobile boost-pfs-filter-custom-sorting">{%- include 'boost-pfs-filter-skeleton', type: 'button' -%}</div>
+    <div class="boost-pfs-filter-tree-mobile-button">{%- include 'boost-pfs-filter-skeleton', type: 'button' -%}</div>
+</div>
+{%- comment -%} END TOOLBAR TOP MOBILE {%- endcomment -%}
+
+
+{%- comment -%} TOOLBAR {%- endcomment -%}
+<div id="toolbar-desktop" class="boost-pfs-filter-default-toolbar">
+    <div class="boost-pfs-container-default boost-pfs-filter-default-toolbar-inner">
+      <div class="boost-pfs-filter-toolbar-item boost-pfs-filter-toolbar-type">
+        <div class="boost-pfs-filter-top-display-type">{%- include 'boost-pfs-filter-skeleton', width: 2 -%}</div>
+      </div>
+      <div class="boost-pfs-filter-toolbar-item boost-pfs-filter-toolbar-count">
+        <span class="boost-pfs-filter-total-product">{%- include 'boost-pfs-filter-skeleton', width: 1 -%}</span>
+      </div>
+      <div class="boost-pfs-filter-toolbar-item boost-pfs-filter-custom-sorting boost-pfs-filter-top-sorting">{%- include 'boost-pfs-filter-skeleton', width: 1 -%}</div>
+    </div>
+</div>
+{%- comment -%} END TOOLBAR {%- endcomment -%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="boost-pfs-filter-wrapper-page">
+  {% if section.settings.switch_layout_filter == 'switch_layout_filter_horizontal' %}
+  <div class="boost-pfs-filter-tree-h-wrapper">
+    <div class="boost-pfs-container-default">
+      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-h" data-is-desktop>
+        {%- include 'boost-pfs-filter-skeleton', type: 'filter-tree-h' -%}
+      </div>
+    </div>
+  </div>
+  <div class="boost-pfs-container-default">
+    <div class="boost-pfs-filter-refine-by-wrapper-h"></div>
+  </div>
+  <div class="boost-pfs-container-default">
+    <div class="boost-pfs-filter-wrapper">
+      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v" data-is-mobile></div>
+      <div class="boost-pfs-filter-products {% if section.settings.show_product_label_image %}boost-pfs-filter-product-item-label-use-img{% endif %} boost-pfs-filter-product-item-label-type-{{ section.settings.product_label_type }} {% if section.settings.product_label_has_border_radius %} boost-pfs-filter-product-item-label-has-border{% endif %} boost-pfs-filter-product-item-show-details-{{ section.settings.show_details_when_hovering }} boost-pfs-filter-product-item-layout-{{ section.settings.product_item_layout }} boost-pfs-filter-product-item-label-{{ section.settings.product_item_label_position }} boost-pfs-filter-product-item-{{ section.settings.swatch_color_display_type }} boost-pfs-filter-swatch-shape-{{ section.settings.swatches_color_shape}} boost-pfs-filter-product-item-text-alignment-{{ section.settings.text_alignment}}">
+        {%- for product in collection.products -%}
+      
+ 
+        
+        
+        
+        
+        
+        
+        {%- render 'boost-pfs-filter-product-item-original',
+                    product: product,
+          products_per_row: products_per_row,
+          products_per_row_mobile: products_per_row_mobile,
+          show_details_when_hovering: show_details_when_hovering,
+          show_vendor: show_vendor,
+          show_price: show_price,
+          show_sold_out_label: show_sold_out_label,
+          show_sale_label: show_sale_label,
+          product_label_type: product_label_type,
+          product_label_has_border_radius: product_label_has_border_radius,
+          active_image_swap: active_image_swap,
+          show_sorting: show_sorting,
+          show_product_review: show_product_review,
+          display_item_swatch: swatch_enable,
+
+	        swatch_enable: swatch_enable,
+          show_swatch_tooltip: show_swatch_tooltip,
+          swatch_change_img: swatch_change_img,
+          swatch_by_color_apply: swatch_by_color_apply,
+          swatch_by_color_shape: swatch_by_color_shape,
+          swatch_by_img_apply: swatch_by_img_apply,
+          swatch_by_img_shape: swatch_by_img_shape,
+          swatch_by_pro_img_apply: swatch_by_pro_img_apply,
+          swatch_by_pro_img_shape: swatch_by_pro_img_shape,
+          swatch_by_text_apply: swatch_by_text_apply,
+          swatch_by_text_shape: swatch_by_text_shape,
+
+          swatch_color_display_type: swatch_color_display_type,
+          swatch_color_event_change_image: swatch_color_event_change_image,
+          swatches_color_shape: swatches_color_shape,
+          equal_height: equal_height,
+          ratio_width_height_other: ratio_width_height_other,
+          equal_height_crop_image_position: equal_height_crop_image_position,
+          show_label_by_tag: show_label_by_tag,
+          show_product_label_image: show_product_label_image,
+          product_label_image_sale: product_label_image_sale,
+          product_label_image_sold_out: product_label_image_sold_out,
+          product_item_type: product_item_type,
+          label_soldout: label_soldout,
+          label_sale: label_sale,
+          label_from: label_from,
+          label_toolbar_viewas: label_toolbar_viewas,
+          label_items_with_count_one: label_items_with_count_one,
+          label_items_with_count_other: label_items_with_count_other,
+          forIndex: forloop.index
+                -%}
+        
+        
+        
+        
+        {%- endfor -%}
+      </div>
+      <div class="boost-pfs-filter-bottom-pagination boost-pfs-filter-bottom-pagination-default">
+        {%- if paginate.pages > 1 -%}
+          {%- include 'boost-pfs-filter-pagination' -%}
+        {%- endif -%}
+      </div>
+      <div class="boost-pfs-filter-load-more"></div>
+
+    </div>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  {% else %}
+    <div class="boost-pfs-filter-wrapper boost-pfs-container-default">
+      <div class="boost-pfs-filter-left-col">
+        <div class="boost-pfs-filter-refine-by-wrapper-v"></div>
+        <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v">{% include 'boost-pfs-filter-skeleton', type: 'filter-tree' %}</div>
+      </div>
+      <div class="boost-pfs-filter-right-col">
+        <div class="boost-pfs-filter-products {% if section.settings.show_product_label_image %}boost-pfs-filter-product-item-label-use-img{% endif %} boost-pfs-filter-product-item-label-type-{{ section.settings.product_label_type }} {% if section.settings.product_label_has_border_radius %} boost-pfs-filter-product-item-label-has-border{% endif %} boost-pfs-filter-product-item-show-details-{{ section.settings.show_details_when_hovering }} boost-pfs-filter-product-item-layout-{{ section.settings.product_item_layout }} boost-pfs-filter-product-item-label-{{ section.settings.product_item_label_position }} boost-pfs-filter-product-item-{{ section.settings.swatch_color_display_type }} boost-pfs-filter-swatch-shape-{{ section.settings.swatches_color_shape}} boost-pfs-filter-product-item-text-alignment-{{ section.settings.text_alignment}}" data-bc-sort="{{ collection.default_sort_by }}">
+          {%- for product in collection.products -%}
+          
+          
+          
+          
+          
+          
+          
+        {%- render 'boost-pfs-filter-product-item-original',
+                    product: product,
+          products_per_row: products_per_row,
+          products_per_row_mobile: products_per_row_mobile,
+          show_details_when_hovering: show_details_when_hovering,
+          show_vendor: show_vendor,
+          show_price: show_price,
+          show_sold_out_label: show_sold_out_label,
+          show_sale_label: show_sale_label,
+          product_label_type: product_label_type,
+          product_label_has_border_radius: product_label_has_border_radius,
+          active_image_swap: active_image_swap,
+          show_sorting: show_sorting,
+          show_product_review: show_product_review,
+          display_item_swatch: swatch_enable,
+	        
+          swatch_enable: swatch_enable,
+          show_swatch_tooltip: show_swatch_tooltip,
+          swatch_change_img: swatch_change_img,
+          swatch_by_color_apply: swatch_by_color_apply,
+          swatch_by_color_shape: swatch_by_color_shape,
+          swatch_by_img_apply: swatch_by_img_apply,
+          swatch_by_img_shape: swatch_by_img_shape,
+          swatch_by_pro_img_apply: swatch_by_pro_img_apply,
+          swatch_by_pro_img_shape: swatch_by_pro_img_shape,
+          swatch_by_text_apply: swatch_by_text_apply,
+          swatch_by_text_shape: swatch_by_text_shape,
+
+          swatch_color_display_type: swatch_color_display_type,
+          swatch_color_event_change_image: swatch_color_event_change_image,
+          swatches_color_shape: swatches_color_shape,
+          equal_height: equal_height,
+          ratio_width_height_other: ratio_width_height_other,
+          equal_height_crop_image_position: equal_height_crop_image_position,
+          show_label_by_tag: show_label_by_tag,
+          show_product_label_image: show_product_label_image,
+          product_label_image_sale: product_label_image_sale,
+          product_label_image_sold_out: product_label_image_sold_out,
+          product_item_type: product_item_type,
+          label_soldout: label_soldout,
+          label_sale: label_sale,
+          label_from: label_from,
+          label_toolbar_viewas: label_toolbar_viewas,
+          label_items_with_count_one: label_items_with_count_one,
+          label_items_with_count_other: label_items_with_count_other
+                -%}
+          
+          
+          
+          
+          
+          
+        {%- endfor -%}
+        </div>
+        <div class="boost-pfs-filter-bottom-pagination boost-pfs-filter-bottom-pagination-default">
+          {%- if paginate.pages > 1 -%}
+            {%- include 'boost-pfs-filter-pagination' -%}
+          {%- endif -%}
+        </div>
+        <div class="boost-pfs-filter-load-more"></div>
+      </div>
+    </div>
+  {% endif %}
+
+  {%- comment -%} start-bc-most-popular-template {%- endcomment -%}
+    <div class="boost-pfs-most-popular-products-wrapper boost-pfs-widget-slider-wrapper">
+      <div class="boost-pfs-most-popular-products boost-pfs-widget-products owl-carousel"></div>
+    </div>
+  {%- comment -%} end-bc-most-popular-template {%- endcomment -%}
+
+  {%- comment -%} start-bc-recently-viewed-template {%- endcomment -%}
+    <div class="boost-pfs-recent-products-wrapper boost-pfs-widget-slider-wrapper">
+      <div class="boost-pfs-recent-products boost-pfs-widget-products owl-carousel"></div>
+    </div>
+  {%- comment -%} end-bc-recently-viewed-template {%- endcomment -%}
+</div>
+
+
+
+
+
+
+
+
+
+
+{%- endpaginate -%}
+
+{%- render 'boost-pfs-theme-config',
+	layout_type: layout_type,
+	enable_filter_sticky_d: enable_filter_sticky_d,
+	view_as_type: view_as_type,
+	products_per_page: products_per_page,
+	products_per_row: products_per_row,
+	products_per_row_m: products_per_row_m,
+	show_detail_when_hover: show_detail_when_hover,
+	show_vendor: show_vendor,
+	show_price: show_price,
+	active_image_swap: active_image_swap,
+	show_product_review: show_product_review,
+  
+	swatch_enable: swatch_enable,
+  show_swatch_tooltip: show_swatch_tooltip,
+	swatch_change_img: swatch_change_img,
+  swatch_by_color_apply: swatch_by_color_apply,
+  swatch_by_color_shape: swatch_by_color_shape,
+  swatch_by_img_apply: swatch_by_img_apply,
+  swatch_by_img_shape: swatch_by_img_shape,
+  swatch_by_pro_img_apply: swatch_by_pro_img_apply,
+  swatch_by_pro_img_shape: swatch_by_pro_img_shape,
+  swatch_by_text_apply: swatch_by_text_apply,
+  swatch_by_text_shape: swatch_by_text_shape,
+
+	aspect_ratio: aspect_ratio,
+	aspect_ratio_other: aspect_ratio_other,
+	product_img_crop: product_img_crop,
+	tag_label_enable: tag_label_enable,
+
+  label_type: label_type,
+	sale_label_enable: sale_label_enable,
+  sale_label_display: sale_label_display,
+  sale_label_img: sale_label_img,
+
+  sold_out_enable: sold_out_enable,
+  sold_out_display: sold_out_display,
+	sold_out_img: sold_out_img,
+
+	product_item_type: product_item_type,
+
+	label_soldout: label_soldout,
+	label_sale: label_sale,
+	label_from: label_from,
+	label_toolbar_viewas: label_toolbar_viewas,
+	label_items_with_count_one: label_items_with_count_one,
+	label_items_with_count_other: label_items_with_count_other,
+  label_sale_percent: label_sale_percent
+-%}
+
+
+<script>
+  let toolBarMobile = document.querySelector(".boost-pfs-filter-toolbar-top-mobile");
+
+  function findOffset(element) {
+    var top = 0, left = 0;
+
+    do {
+      top += element.offsetTop  || 0;
+      left += element.offsetLeft || 0;
+      element = element.offsetParent;
+    } while(element);
+
+    return {
+      top: top,
+      left: left
+    };
+  }
+  
+  var collectionPage = {{ collection.handle | json }};
+
+
+  window.onload = function () {
+    var stickyDivHeader = document.getElementById('toolbar-mobile');
+    var desktopStickyDivHeader = document.getElementById('toolbar-desktop');
+    
+    var headerOffset = findOffset(stickyDivHeader);
+    var desktopHeaderOffset = findOffset(desktopStickyDivHeader);
+
+    window.onscroll = function() {
+
+      if(window.innerWidth < 768){
+        // body.scrollTop is deprecated and no longer available on Firefox
+        var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //if scroll position is greater than stickyDiv, make div fixed at top 
+        // by adding class 'fixed'
+        if (bodyScrollTop > headerOffset.top - 30) {
+          stickyDivHeader.classList.add('fixed-toolbar');
+        } else {
+          stickyDivHeader.classList.remove('fixed-toolbar');
+        }
+      } else{
+        // body.scrollTop is deprecated and no longer available on Firefox
+        var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //if scroll position is greater than stickyDiv, make div fixed at top 
+        // by adding class 'fixed'
+        if (bodyScrollTop > desktopHeaderOffset.top - 30) {
+          desktopStickyDivHeader.classList.add('fixed-toolbar-desktop');
+        } else {
+          desktopStickyDivHeader.classList.remove('fixed-toolbar-desktop');
+        }
+      }
+    };
+  };
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Collection pages",
+    "settings": [
+      {
+      "type": "header",
+      "content": "For Layout Page"
+    },
+    {
+      "type": "radio",
+      "id": "layout_type",
+      "label": "Layout Type",
+      "options": [
+        {
+        "value": "box",
+        "label": "Box"
+        },
+        {
+        "value": "fullwidth",
+        "label": "Full Width"
+        }
+      ],
+      "default": "box"
+    },
+    {
+      "type": "header",
+      "content": "Collection Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": "Show Collection Image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_des",
+      "label": "Show Collection Description",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "collection_header_bg",
+      "label": "Header Background Color"
+    },
+    {
+      "type": "color",
+      "id": "collection_header_text",
+      "label": "Header Text Color"
+    },
+    {
+      "type": "header",
+      "content": "For Filter"
+    },
+    {
+      "type": "radio",
+      "id": "switch_layout_filter",
+      "label": "Switch Layout Filter",
+      "options": [
+        {
+          "value": "switch_layout_filter_vertical",
+          "label": "Vertical Filter"
+        },
+        {
+          "value": "switch_layout_filter_horizontal",
+          "label": "Horizonal Filter"
+        }
+      ],
+      "default": "switch_layout_filter_horizontal"
+    },
+      {
+      "type": "checkbox",
+      "id": "enable_filter_sticky_d",
+      "label": "Enable Filter Sticky on Desktop",
+      "default": false
+    },
+      {
+      "type": "checkbox",
+      "id": "enable_filter_sticky_m",
+      "label": "Enable Filter Toolbar Sticky on Mobile",
+      "default": true
+    },
+    {
+    "type": "radio",
+    "id": "filter_layout",
+    "label": "Filter Layout",
+    "options": [
+      {
+        "value": "filter_layout_default",
+        "label": "Filter Layout Default"
+      },
+      {
+        "value": "filter_layout_collapse",
+        "label": "Filter Layout Collapse"
+      },
+      {
+        "value": "filter_layout_slide",
+        "label": "Filter Layout Slide (Only work on Vertical Layout)"
+      }
+    ],
+    "default": "filter_layout_default"
+  },
+
+  {
+    "type": "header",
+    "content": "Toolbar"
+  },
+    {
+    "type": "checkbox",
+    "id": "show_view_as",
+    "label": "Show - View As",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_product_count",
+    "label": "Show - Product Count",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_sort_by",
+    "label": "Show - Sort By",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_view_as_m",
+    "label": "Show - View As - Mobile",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_product_count_m",
+    "label": "Show - Product Count - Mobile",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_sort_by_m",
+    "label": "Show - Sort By - Mobile",
+    "default": true
+  },
+  {
+    "type": "radio",
+    "id": "view_as_type",
+    "label": "View As Type",
+    "options": [
+      {
+      "value": "view_as_type_grid_list",
+      "label": "Grid/List"
+      },
+      {
+      "value": "view_as_type_list_grid_multi_col",
+      "label": "List/Grid Multi Column"
+      }
+    ],
+    "default": "view_as_type_list_grid_multi_col"
+  },
+  {
+    "type": "header",
+    "content": "Product List"
+  },
+  {
+    "type": "range",
+    "id": "products_per_page",
+    "label": "Products per page",
+    "min": 2,
+    "max": 50,
+    "step": 1,
+    "default": 16
+  },
+  {
+    "type": "range",
+    "id": "products_per_row",
+    "label": "Products per row on Desktop",
+    "min": 2,
+    "max": 6,
+    "step": 1,
+    "default": 4
+  },
+  {
+    "type": "range",
+    "id": "products_per_row_m",
+    "label": "Products per row on Mobile",
+    "min": 1,
+    "max": 3,
+    "step": 1,
+    "default": 2
+  },
+  {
+    "type": "header",
+    "content": "Product Item"
+  },
+    {
+      "type": "select",
+      "id": "product_item_type",
+      "label": "Product Item Type",
+      "options": [
+      {
+        "value": "grid",
+        "label": "Grid"
+      },
+      {
+        "value": "list",
+        "label": "List"
+      }],
+      "default": "grid"
+    },
+    {
+      "type": "select",
+      "id": "product_item_layout",
+      "label": "Product Item Layout",
+      "options": [
+        {
+          "value": "no-border",
+          "label": "No Border (Default)"
+        },
+        {
+          "value": "border-no-padding",
+          "label": "Border No Padding"
+        },
+        {
+          "value": "border-no-padding-img",
+          "label": "Border No Padding Image"
+        },
+        {
+          "value": "border-has-padding",
+          "label": "Border Has Padding"
+        }
+      ],
+      "default": "no-border"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "info": "Use this setting for Product type Grid"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_detail_when_hover",
+      "label": "Show details when hovering",
+      "default": false,
+      "info": "This setting only works on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show product vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "active_image_swap",
+      "label": "Active image swap",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_review",
+      "label": "Show product review",
+      "default": false,
+      "info": "Use this setting when store has product reviews integration"
+    },
+    {
+      "type": "header",
+      "content": "Product Item - Title"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Title",
+      "default": "#3d4246"
+    },
+    {
+      "type": "font_picker",
+      "id": "product_title_font",
+      "label": "Font",
+      "default": "poppins_n6"
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "label": "Product Item Title - Font Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "product_title_transform",
+      "label": "Product Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "uppercase",
+          "label": "uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "capitalize"
+        },
+        {
+          "value": "lowercase",
+          "label": "lowercase"
+        }
+      ],
+      "default": "capitalize"
+    },
+    {
+      "type": "header",
+      "content": "Product Item - Vendor"
+    },
+    {
+      "type": "color",
+      "id": "product_vendor_color",
+      "label": "Vendor",
+      "default": "#969595"
+    },
+    {
+      "type": "font_picker",
+      "id": "product_vendor_font",
+      "label": "Font",
+      "default": "poppins_n4"
+    },
+    {
+      "type": "range",
+      "id": "product_vendor_size",
+      "label": "Product Item Vendor - Font Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "product_vendor_transform",
+      "label": "Product Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "uppercase",
+          "label": "uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "capitalize"
+        },
+        {
+          "value": "lowercase",
+          "label": "lowercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Product Item - Price"
+    },
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Price",
+      "default": "#222"
+    },
+    {
+      "type": "color",
+      "id": "product_old_price_color",
+      "label": "Old Price",
+      "default": "#969595"
+    },
+    {
+      "type": "color",
+      "id": "product_sale_price_color",
+      "label": "Sale Price",
+      "default": "#f30000"
+    },
+    {
+      "type": "font_picker",
+      "id": "product_price_font",
+      "label": "Font",
+      "default": "poppins_n4"
+    },
+    {
+      "type": "range",
+      "id": "product_price_size",
+      "label": "Product Item Price - Font Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Product Item - Description"
+    },
+    {
+      "type": "color",
+      "id": "product_des_color",
+      "label": "Description Color",
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "font_picker",
+      "id": "product_des_font",
+      "label": "Font",
+      "default": "poppins_n4"
+    },
+    {
+      "type": "range",
+      "id": "product_des_size",
+      "label": "Product Item Description - Font Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+  {
+    "type": "header",
+    "content": "Swatch settings"
+  },
+  {
+    "type": "checkbox",
+    "id": "swatch_enable",
+    "label": "Enable Display Item Swatch",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_swatch_tooltip",
+    "label": "Show item swatch tooltip",
+    "default": true
+  },
+    {
+      "type": "radio",
+      "id": "swatch_change_img",
+      "label": "Change product image when interacting with swatch color",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "hover",
+          "label": "Hover"
+        },
+        {
+          "value": "click",
+          "label": "Click"
+        }
+      ],
+      "default": "hover"
+    },
+
+    {
+      "type": "header",
+      "content": "SWATCH BY COLOR"
+    },
+    {
+      "type": "textarea",
+      "id": "swatch_by_color_apply",
+      "label": "Apply for",
+      "info": "Please insert the product option! EX: color, type, ..."
+    },
+    {
+      "type": "radio",
+      "id": "swatch_by_color_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+
+    {
+      "type": "header",
+      "content": "SWATCH BY IMAGE"
+    },
+    {
+      "type": "textarea",
+      "id": "swatch_by_img_apply",
+      "label": "Apply for",
+      "info": "Please insert the product option! EX: color, type, ..."
+    },
+    {
+      "type": "radio",
+      "id": "swatch_by_img_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+
+    {
+      "type": "header",
+      "content": "SWATCH BY PRODUCT IMAGE"
+    },
+    {
+      "type": "textarea",
+      "id": "swatch_by_pro_img_apply",
+      "label": "Apply for",
+      "default": "color",
+      "info": "Please insert the product option! EX: color, type, ..."
+    },
+    {
+      "type": "radio",
+      "id": "swatch_by_pro_img_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+
+    {
+      "type": "header",
+      "content": "SWATCH BY TEXT"
+    },
+    {
+      "type": "textarea",
+      "id": "swatch_by_text_apply",
+      "label": "Apply for",
+      "info": "Please insert the product option! EX: size, ..."
+    },
+    {
+      "type": "radio",
+      "id": "swatch_by_text_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "color",
+      "id": "swatch_by_text_bg",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "swatch_by_text_color",
+      "label": "Text color",
+      "default": "#3d4246"
+    },
+    {
+      "type": "color",
+      "id": "swatch_by_text_border",
+      "label": "Border color",
+      "default": "#ebebeb"
+    },
+
+    {
+      "type": "radio",
+      "id": "swatch_color_display_type",
+      "label": "Display Type",
+      "options": [
+        {
+          "value": "swatch_color_display_type_color",
+          "label": "Color"
+        },
+        {
+          "value": "swatch_color_display_type_image_color",
+          "label": "Color Image"
+        },
+        {
+          "value": "swatch_color_display_type_image_product",
+          "label": "Product Image"
+        }
+      ],
+      "default": "swatch_color_display_type_image_product",
+      "info": "Please refer [this link](https:\/\/help.boostcommerce.net\/article\/417-how-to-config-the-product-item-layout-in-our-default-theme#a10) about 3 display types of Color swatches!"
+    },
+
+    {
+      "type": "radio",
+      "id": "swatches_color_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "header",
+      "content": "Product Image"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Product image aspect ratio (Width x Height)",
+      "options": [
+        {
+          "value": "false",
+          "label": "Disabled"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "1:1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "2:3",
+          "label": "Portrait (2:3)"
+        },
+        {
+          "value": "4:3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "other",
+          "label": "Manual ratio below"
+        }
+      ],
+      "default": "auto",
+      "info": "For best results [all product photos should be the same ratio](https:\/\/help.shopify.com\/manual\/productivity-tools\/image-editor#image-aspect-ratio)"
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio_other",
+      "label": "Example: 6:7",
+      "info": "If the ratios above is not suitable for your store, could you please enter your aspect ratio (Width x Height) in the form below?"
+    },
+    {
+      "type": "select",
+      "id": "product_img_crop",
+      "label": "Crop image position",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "Product Item - Label"
+    },
+    {
+      "type": "select",
+      "id": "label_position",
+      "label": "Product Label Position",
+      "default": "center",
+      "options": [
+      {
+        "value": "top_left",
+        "label": "Top Left"
+      },
+      {
+        "value": "top_right",
+        "label": "Top Right"
+      },
+      {
+        "value": "bottom_left",
+        "label": "Bottom Left"
+      },
+      {
+        "value": "bottom_right",
+        "label": "Bottom Right"
+      }],
+      "default": "top_left"
+    },
+    {
+      "type": "select",
+      "id": "label_type",
+      "label": "Product Label Type",
+      "options": [
+        {
+          "value": "rectangle",
+          "label": "Rectangle"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        }
+      ],
+      "default": "rectangle"
+    },
+    {
+      "type": "header",
+      "content": "Sale Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "sale_label_enable",
+      "label": "Show sale label",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "sale_label_display",
+      "label": "Sale label display",
+      "options": [
+        {
+          "value": "text",
+          "label": "Text"
+        },
+        {
+          "value": "sale_percent",
+          "label": "Sale Percent"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "color",
+      "id": "sale_label_bg",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "sale_label_text",
+      "label": "Text Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "sale_label_img",
+      "label": "Upload Product Label Sale"
+    },
+    {
+      "type": "header",
+      "content": "Sold Out Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "sold_out_enable",
+      "label": "Show sold out label",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "sold_out_display",
+      "label": "Sale label display",
+      "options": [
+        {
+          "value": "text",
+          "label": "Text"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_bg",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_text",
+      "label": "Text Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "sold_out_img",
+      "label": "Upload Product Label Sold Out "
+    },
+    {
+      "type": "header",
+      "content": "Custom Label By Tag"
+    },
+    {
+      "type": "checkbox",
+      "id": "tag_label_enable",
+      "label": "Enable the Custom Label By Tag",
+      "default": false,
+      "info": "Please refer [this link](https:\/\/help.boostcommerce.net\/article\/475-how-to-create-custom-label-by-tag-in-the-default-theme) to create a Custom Label By Tag!"
+    },
+    {
+      "type": "color",
+      "id": "tag_label_bg",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "tag_label_text",
+      "label": "Text Color"
+    },
+      {
+        "type": "radio",
+        "id": "tag_filtering",
+        "label": "Tag filtering",
+        "default": "simple",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "simple",
+            "label": "Simple"
+          },
+          {
+            "value": "tag_groups",
+            "label": "Tag groups"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Tag groups let you create custom filters for your collections [Learn more](https:\/\/cleancanvas.co.uk\/support\/general\/tag-groups)"
+      },
+      {
+        "type": "checkbox",
+        "id": "collapse_tag_sidebar_by_default",
+        "label": "Collapse filter column",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Custom Filters",
+        "info": "For the filter buttons tag text, insert the full name for the tag. Example: 'color_navy-blue'"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_1",
+        "label": "Filter Button 1 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_1",
+        "label": "Filter Button 1 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_1",
+        "label": "Filter Button 1 Tag"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_2",
+        "label": "Filter Button 2 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_2",
+        "label": "Filter Button 2 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_2",
+        "label": "Filter Button 2 Tag"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_3",
+        "label": "Filter Button 3 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_3",
+        "label": "Filter Button 3 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_3",
+        "label": "Filter Button 3 Tag"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_4",
+        "label": "Filter Button 4 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_4",
+        "label": "Filter Button 4 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_4",
+        "label": "Filter Button 4 Tag"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_5",
+        "label": "Filter Button 5 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_5",
+        "label": "Filter Button 5 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_5",
+        "label": "Filter Button 5 Tag"
+      },
+      {
+        "type": "image_picker",
+        "id": "tag_button_image_6",
+        "label": "Filter Button 6 Image"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_6",
+        "label": "Filter Button 6 Text"
+      },
+      {
+        "type": "text",
+        "id": "tag_button_text_tag_6",
+        "label": "Filter Button 6 Tag"
+      }
+  ]
+}
+{% endschema %}

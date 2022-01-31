@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-wishlist",
+      "settings": {}
+    },
+    "16369360856d64284a": {
+      "type": "recent-viewed-products",
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16369360856d64284a"
+  ]
+}

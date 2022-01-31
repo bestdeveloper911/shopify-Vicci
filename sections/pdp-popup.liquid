@@ -1,0 +1,79 @@
+<style>
+
+    .{{section.id}}.pdp-modal-wrapper {
+        position:fixed;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height:100%;
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:10000;
+    }
+    
+    .pdp-modal-wrapper .modal {
+        transform:translate(-50%, -50%);
+        left:50%;
+        top:50%;
+        position:absolute;
+        z-index:1001;
+        width:98%;
+        max-width:650px;
+    }
+    
+    .pdp-modal-wrapper .modal img{
+        width:100%;
+        max-width:600px;
+    }
+    .modal-close {
+        color: white;
+        cursor: pointer;
+        font-size: 24px;
+        position: relative;
+        float: right;
+        bottom: 45px;
+        right:30px
+    }
+    .modal-close:hover {
+        opacity: 0.6;
+    }
+    
+    @media screen and (max-width:767px) {
+      .modal-close {
+        bottom:15px;
+      }
+    }
+    </style>
+    
+    {%- assign item = section.settings -%}
+    <div style="display:none;" class="{{section.id}} pdp-modal-wrapper">
+        <div class="modal">
+            <div class="modal-close">X</div>
+            <img class="popup-image" src="{{section.settings.image | img_url: '1000x'}}"/>
+       </div>
+    </div>
+    <script>
+    
+        let action = document.querySelector("#measurementInfo")
+        let modal = document.querySelector(".pdp-modal-wrapper")
+        
+    </script>
+    {% schema %}
+    {
+      "name": "Pop up",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Measurement Pop-up"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Pick an image"
+        }
+      ]
+    }
+    
+    {% endschema %}
+    
+  

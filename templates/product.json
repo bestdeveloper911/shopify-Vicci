@@ -1,0 +1,413 @@
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "text_alignment": "center",
+        "hide_current": false,
+        "hide_on_mb": true
+      }
+    },
+    "measure-popup": {
+      "type": "pdp-popup",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/pdp-popup.jpg"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "ad70ec85-866a-480b-b318-1e325144db46": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "size_title": "Size"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_atc_button": true,
+            "show_dynamic_checkout": true
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "disabled": true,
+          "settings": {
+            "show_atcp": false,
+            "show_ask_a_question": true,
+            "show_social": true
+          }
+        },
+        "67d380b0-bd3c-45fd-9210-69adf0d78d39": {
+          "type": "trust_badge",
+          "disabled": true,
+          "settings": {
+            "trust_badges_text": "<p>Guarantee safe & secure checkout<\/p>",
+            "trust_badges_image": "shopify:\/\/shop_images\/TEST.png",
+            "trust_badges_image_width": "100%",
+            "position": "below"
+          }
+        },
+        "781a924d-9e13-4fad-b112-92ef910bde32": {
+          "type": "shipping",
+          "settings": {
+            "show_delivery_times": true,
+            "deliver_text": "Estimated Delivery:",
+            "deliver_days": "7",
+            "show_shipping_text": true,
+            "shipping_text": "<p><strong>Free Shipping & Returns: <\/strong>On all orders over $75<\/p>"
+          }
+        },
+        "c2e8fa2a-80d5-42a7-b107-9bccde1891d8": {
+          "type": "features",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "feature1": "Feature 1",
+            "feature2": "",
+            "feature3": ""
+          }
+        },
+        "72176702-61f5-4b6c-b7fc-67884a93bce6": {
+          "type": "short_description",
+          "settings": {}
+        },
+        "46c250d3-ca22-4553-834e-c326022f6e94": {
+          "type": "custom_field",
+          "disabled": true,
+          "settings": {
+            "title": "Dimensions",
+            "field_type": "text",
+            "field_options": "",
+            "field_placeholder": "",
+            "field_required": false,
+            "show_at_checkout": true
+          }
+        },
+        "789793ad-a1cc-4731-8484-04fe926066d7": {
+          "type": "features",
+          "settings": {
+            "product": "alexius",
+            "feature1": "100% UV protection",
+            "feature2": "Large  (58 – 14 – 145)",
+            "feature3": "Stainless Steel Hinges"
+          }
+        },
+        "62277d79-d69d-4192-8ce4-fa7827d60a79": {
+          "type": "features",
+          "settings": {
+            "product": "analia",
+            "feature1": "Hand-polished Premium Acetate",
+            "feature2": "Medium (52 – 20 – 145)",
+            "feature3": "Stainless Steel Hinges"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "ad70ec85-866a-480b-b318-1e325144db46",
+        "variant_picker",
+        "buy_buttons",
+        "addons",
+        "67d380b0-bd3c-45fd-9210-69adf0d78d39",
+        "781a924d-9e13-4fad-b112-92ef910bde32",
+        "c2e8fa2a-80d5-42a7-b107-9bccde1891d8",
+        "72176702-61f5-4b6c-b7fc-67884a93bce6",
+        "46c250d3-ca22-4553-834e-c326022f6e94",
+        "789793ad-a1cc-4731-8484-04fe926066d7",
+        "62277d79-d69d-4192-8ce4-fa7827d60a79"
+      ],
+      "settings": {
+        "container": "container-fluid",
+        "layout": "layout-1",
+        "show_atwl": true,
+        "show_nav_media_mobile": false,
+        "show_pagination_mobile": true,
+        "use_sticky_atc": true,
+        "use_sticky_atc_on_mobile": true,
+        "enable_dynamic_checkout": false,
+        "sticky_atc_wishtlist": true,
+        "sticky_atc_compare": false
+      }
+    },
+    "product-details-tabs": {
+      "type": "product-details-tabs",
+      "disabled": true,
+      "blocks": {
+        "description": {
+          "type": "description",
+          "settings": {
+            "header": "Details"
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "header": "Shipping & Returns",
+            "content": "<p>Shipping cost is based on weight. Just add products to your cart and use the Shipping Calculator to see the shipping price.<\/p><p>We want you to be 100% satisfied with your purchase. Items can be returned or exchanged within 30 days of delivery.<\/p>",
+            "content_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "tab"
+      ],
+      "settings": {
+        "container": "container",
+        "bg_color": "",
+        "default_open": true
+      }
+    },
+    "1636932210fd9b532a": {
+      "type": "icon-box",
+      "disabled": true,
+      "blocks": {
+        "163693221066f28e6e-0": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/free2.png",
+            "title": "Free USA shipping",
+            "description": "<p>On all domestic orders<\/p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "163693221066f28e6e-1": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/promise.png",
+            "title": "100% Secure checkout",
+            "description": "<p>Encrypted SSL servers<\/p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "163693221066f28e6e-2": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/chat2.png",
+            "title": "24\/7 online support",
+            "description": "<p>Customer chat always online<\/p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "6255c557-883c-4421-b13a-082580929fec": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/shop.png",
+            "title": "Financing available",
+            "description": "<p>Pay in 4-installments<\/p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "163693221066f28e6e-0",
+        "163693221066f28e6e-1",
+        "163693221066f28e6e-2",
+        "6255c557-883c-4421-b13a-082580929fec"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "#f8f8f8",
+        "item_per_row": 4,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "card_style": "vertical",
+        "image_max_width": "100px",
+        "content_alignment": "center",
+        "hover_effect": "zoom-in",
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "use_scroll_mobile": true,
+        "use_grid_column_mb": false,
+        "custom_class": ""
+      }
+    },
+    "16369322152735805f": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "container": "container-fluid",
+        "background_color": "#f8f8f8",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "image": "shopify:\/\/shop_images\/Frame_0090_topside-600x400_1_98e025fe-a390-4bf3-981c-72ed2e9a699a-removebg-preview.png",
+        "link": "",
+        "layout": "right",
+        "image_column_size": "5",
+        "title": "Down to details",
+        "sub_title": "",
+        "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p><p><strong>• <\/strong>Technical details about glasses<\/p><p><strong>• <\/strong>Technical details about glasses<\/p><p><strong>• <\/strong>Technical details about glasses<\/p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": ""
+      }
+    },
+    "16388968166a10109c": {
+      "type": "product-meta-section3",
+      "settings": {
+        "meta_content3": true,
+        "container": "container-fluid",
+        "background_color": "#f8f8f8"
+      }
+    },
+    "163856662309e7b5de": {
+      "type": "product-meta-section1",
+      "settings": {
+        "meta_content1": true,
+        "container": "container-fluid",
+        "background_color": "rgba(0,0,0,0)"
+      }
+    },
+    "16385761416f0dbef4": {
+      "type": "product-meta-section2",
+      "settings": {
+        "meta_content2": true,
+        "container": "container-fluid",
+        "background_color": "#f8f8f8"
+      }
+    },
+    "1636931808eb18aca4": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "container": "container-fluid",
+        "background_color": "rgba(0,0,0,0)",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "image": "shopify:\/\/shop_images\/Frame_0090_front_720x_ba6c20b3-ee78-46e0-86a0-c628a1ca5038.jpg",
+        "link": "",
+        "layout": "left",
+        "image_column_size": "5",
+        "title": "The perfect fit",
+        "sub_title": "",
+        "text": "<p>Proin eget tortor risus. Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Proin eget tortor risus. Proin eget tortor risus. Vivamus suscipit tortor eget felis porttitor volutpat. <\/p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "Size Guide",
+        "button_link": "",
+        "button_style": "sf__btn-link",
+        "button_size": "sf__btn-large",
+        "custom_class": ""
+      }
+    },
+    "16383662999fb67855": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "container": "container-fluid",
+        "background_color": "#f8f8f8",
+        "item_gap": 82,
+        "item_gap_mobile": 14,
+        "image": "shopify:\/\/shop_images\/Case-4_op_1000x-removebg-preview.png",
+        "link": "",
+        "layout": "right",
+        "image_column_size": "6",
+        "title": "What's Included",
+        "sub_title": "",
+        "text": "<p>A frame case and lens cloth are complimentary with each pair of VICCI frames. We also offer FREE shipping and FREE 14-day return or exchange policy. We offer a 1-year warranty from the purchase date that covers manufacturing defects. That includes replacing your frames for FREE.<\/p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": ""
+      }
+    },
+    "1636931800365b126e": {
+      "type": "product-reviews",
+      "settings": {
+        "container": "container",
+        "heading": "Reviews",
+        "custom_liquid": ""
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "container": "container",
+        "heading": "Popular Frames",
+        "limit": 6,
+        "columns": 3,
+        "column_gap": 18,
+        "enable_slider": true
+      }
+    },
+    "recent-viewed-products": {
+      "type": "recent-viewed-products",
+      "disabled": true,
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "measure-popup",
+    "main",
+    "product-details-tabs",
+    "1636932210fd9b532a",
+    "16369322152735805f",
+    "16388968166a10109c",
+    "163856662309e7b5de",
+    "16385761416f0dbef4",
+    "1636931808eb18aca4",
+    "16383662999fb67855",
+    "1636931800365b126e",
+    "product-recommendations",
+    "recent-viewed-products"
+  ]
+}

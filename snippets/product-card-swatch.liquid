@@ -1,0 +1,97 @@
+{%- capture product_swatch -%}
+
+  {%- assign swatch_option_name = 'Color' -%}
+  {%- assign filter_swatch_option_title = 'Color' | handleize | replace: '-', '_' -%}
+  {%- assign swatch_values_size = product.options_by_name[swatch_option_name].values.size -%}
+  {%- assign bg_size = '50x' -%}
+  {%- assign swath_limit = 4 -%}
+  {%- assign file_extension = 'png' -%}
+  {%- assign swatch_data_img = preview_image | img_url: image_size -%}
+
+  {%- if swatch_values_size < swath_limit -%}
+    {%- assign swath_limit = swatch_values_size -%}
+  {%- endif -%}
+  {%- if swatch_values_size > 0 -%}
+  <ul class="boost-pfs-filter-item-swatch">
+    {%- for option in product.options -%} 
+      {%- if option == swatch_option_name -%}
+
+        {%- assign swatch_index = forloop.index0 -%}
+        {%- assign swatch_list = '' -%}
+        {%- assign swatch_name = '' -%}
+        {%- assign count_swatch = 0 -%}
+
+        {%- for variant in product.variants -%}
+    
+          {% if count_swatch < swath_limit %}
+
+            {%- capture swatch_name -%}
+              {{- variant.options[swatch_index] -}}
+            {%- endcapture -%}
+
+            {%- unless swatch_list contains swatch_name -%}
+              {%- assign swatch_list = swatch_list | append: swatch_name | append: ';' -%}
+              {%- assign count_swatch = count_swatch | plus : 1 -%}
+              {%- assign file_name = '' -%}
+
+              {%- case swatch_color_display_type -%}
+                {%- when 'swatch_color_display_type_image_color' -%}
+                  {%- assign file_name = swatch_name | handleize | append: '.' | append: file_extension -%}
+                  {%- assign swatch_img_url = filter_swatch_option_title | append: '-' | append: file_name | file_url -%}
+                {%- when 'swatch_color_display_type_image_product' -%}
+                  {%- assign swatch_img_url = preview_image | img_url: bg_size -%}
+                  {%- if variant.image != null -%}
+                  {%- assign swatch_img_url = variant.image.src | img_url: bg_size -%}
+                  {%- endif -%}
+                {%- else -%}
+                {%- assign swatch_img_url = '' -%}
+              {%- endcase -%}
+
+              {%- capture swatch_bg_img -%}
+                {%- if swatch_img_url != '' -%}
+                  background-image: url({{- swatch_img_url -}});
+                {%- endif -%}
+              {%- endcapture -%}
+
+              {%- capture swatch_bg_color -%}
+                background-color: {{- swatch_name -}};
+              {%- endcapture -%}
+
+              {%- if variant.image != null -%}
+                {%- assign swatch_data_img = variant.image.src | img_url: image_size | append: ' ' | append: data_widths[2] | append: 'w' -%}
+              {%- endif -%}
+
+    
+              {% unless swatch_name contains "(D#" %} 
+    
+              <li>
+                <div class="boost-pfs-product-item-tooltip">{{- swatch_name -}}</div>
+                <span tabindex="0" aria-label="{{- swatch_name -}}"
+                      data-value="{{- swatch_name | handleize -}}"
+                      style="{{- swatch_bg_img -}} {{- swatch_bg_color -}}"
+                      data-img="{{- swatch_data_img -}}"></span>
+              </li>
+              {% endunless %}
+    
+            {%- endunless -%}
+
+          {% endif %} 
+        {%- endfor -%}
+
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if swatch_values_size > 4 -%}
+    <li class="boost-pfs-filter-item-swatch-more">
+      <a href="{{- product_url -}}#" title="More {{- swatch_option_name -}}">
+        + {{- swatch_values_size | minus : swath_limit -}}
+      </a>
+    </li>
+    {%- endif -%}
+
+  </ul>
+  {%- endif -%}
+
+{%- endcapture -%}
+
+{{ product_swatch }}

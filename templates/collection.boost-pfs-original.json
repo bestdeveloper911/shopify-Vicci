@@ -1,0 +1,170 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-page-header",
+      "blocks": {
+        "231034e7-ae41-4e25-87ca-6b793d211ef0": {
+          "type": "banner",
+          "settings": {
+            "collection": "acetate",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-11-18_at_2.49.17_PM.png"
+          }
+        }
+      },
+      "block_order": [
+        "231034e7-ae41-4e25-87ca-6b793d211ef0"
+      ],
+      "settings": {
+        "layout": "without_breadcrumb",
+        "header_height": "large",
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "bg_color": "#f8f8f8",
+        "enable_parallax": false,
+        "upper_title": false,
+        "show_desc": false,
+        "collection_all_desc": ""
+      }
+    },
+    "1636954054aa94feb4": {
+      "type": "apps",
+      "disabled": true,
+      "blocks": {
+        "a9b16cd9-363a-4d03-8540-005344e002da": {
+          "type": "shopify:\/\/apps\/product-filter-search\/blocks\/template-boost-pfs-filter-default\/7fc998ae-a150-4367-bab8-505d8a4503f7",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "a9b16cd9-363a-4d03-8540-005344e002da"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "custom_class": ""
+      }
+    },
+    "main": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "26ef6509-772d-4c44-bd90-efc089bd9355": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "button",
+            "title": "Size",
+            "filtergroup": "Full Frame, Half Frame",
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        },
+        "e12de6da-eab8-4abe-967c-06d0d959a18a": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "color",
+            "title": "Colors",
+            "filtergroup": "Blue, Red, White ,Black ,Pink ,Silver,Purple,Brown,Yellow,Grey,Green,Tan,Violet,Dark Grey,Beige,Light Blue, Dark Blue, Light Grey, Light Pink, Mint, Rose Gold, Night Blue, Copper, Coral, Rosy Brown",
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        },
+        "fa31a837-9c99-4c92-8cfe-0527ffbe7b15": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "default",
+            "title": "Prices",
+            "filtergroup": "$0-$50,$50-$100,$100-$150,$150-$200,$200-$300,$300-$400",
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        },
+        "4903963a-90f0-4fe1-be23-ee4f8749e483": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "inrow",
+            "title": "Style",
+            "filtergroup": "Round, Oval",
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        },
+        "00b3badd-1613-4230-85d8-f87f04306aaa": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "default",
+            "title": "Features",
+            "filtergroup": "material:Metal, material:Acetate",
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        }
+      },
+      "block_order": [
+        "26ef6509-772d-4c44-bd90-efc089bd9355",
+        "e12de6da-eab8-4abe-967c-06d0d959a18a",
+        "fa31a837-9c99-4c92-8cfe-0527ffbe7b15",
+        "4903963a-90f0-4fe1-be23-ee4f8749e483",
+        "00b3badd-1613-4230-85d8-f87f04306aaa"
+      ],
+      "settings": {
+        "container": "container-fluid",
+        "grid_layout": "grid",
+        "grid_columns": "3",
+        "pagination_limit": 12,
+        "show_columns_switcher": true,
+        "show_sorting": true,
+        "show_filter": true,
+        "filters_type": "tags_filter",
+        "sidebar": "fixed",
+        "sidebar_title": "Filters",
+        "limit_height_widget": false,
+        "paginate_type": "infinite"
+      }
+    },
+    "recent-viewed": {
+      "type": "recent-viewed-products",
+      "disabled": true,
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    },
+    "163726478116dfd56c": {
+      "type": "image-with-text-2",
+      "settings": {
+        "container": "w-full",
+        "hero_size": "large",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/Screen_Shot_2021-11-18_at_2.47.17_PM.png",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "Discover Your Viccis",
+        "subtitle": "",
+        "text": "",
+        "button_label": "Take the Quiz",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "1636954054aa94feb4",
+    "main",
+    "recent-viewed",
+    "163726478116dfd56c"
+  ]
+}

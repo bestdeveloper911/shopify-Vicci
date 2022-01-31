@@ -1,0 +1,374 @@
+{
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/f.png",
+    "show_scroll_top_button": false,
+    "container_width": 1200,
+    "container_fluid_width": 1620,
+    "container_fluid_offset": 65,
+    "color_primary": "#ab9380",
+    "color_field_bg": "#fff",
+    "color_body_text": "#000000",
+    "color_heading_text": "#313131",
+    "color_sub_text": "#666666",
+    "color_text_link": "#ffffff",
+    "color_btn_bg": "#000000",
+    "color_btn_bg_hover": "#000000",
+    "prod_sale_price_color": "#666666",
+    "prod_type_color": "#666666",
+    "color_annoucement_bg": "#ab9380",
+    "color_topbar_bg": "#000000",
+    "color_topbar_text": "#fff",
+    "color_header_bg": "#fff",
+    "color_header_link": "#000000",
+    "color_header_transparent": "#000000",
+    "color_cart_wishlist_count": "#000000",
+    "bg_cart_wishlist_count": "#e7ded3",
+    "color_menu_bar_bg": "#000000",
+    "color_menu_bar_text": "#fff",
+    "color_footer_bg": "#000000",
+    "color_footer_text": "#ffffff",
+    "color_footer_subtext": "#fff",
+    "color_footer_link": "#ffffff",
+    "color_footer_link_hover": "#000000",
+    "color_footer_bg_mb": "#000000",
+    "color_footer_bottom_bg": "#000000",
+    "color_footer_bottom_text": "#ffffff",
+    "color_footer_bottom_bg_mb": "#000000",
+    "color_border": "#e7ded3",
+    "img_overlay_opacity": 20,
+    "tooltip_background_color": "#fff",
+    "tooltip_text_color": "#666666",
+    "type_base_font": "futura_n3",
+    "use_custom_font_body": false,
+    "custom_body_font": "",
+    "custom_body_weight": "400",
+    "type_header_font": "futura_n3",
+    "use_custom_font_heading": false,
+    "custom_heading_font": "",
+    "custom_heading_weight": "400",
+    "type_header_base_size": 30,
+    "btn_weight": "500",
+    "pcard_layout": "1",
+    "pcard_alignment": "center",
+    "pcard_image_ratio": "16\/9",
+    "show_swatch_option": false,
+    "on_sale_badge": "show_text",
+    "show_cart_button": false,
+    "show_quickview_button": false,
+    "show_compare_button": false,
+    "show_vendor": false,
+    "show_review_badge": true,
+    "select_option_button_action": "link",
+    "variant_option_design1": "button",
+    "variant_option_design2": "image",
+    "variant_option_design3": "color",
+    "product_colors": "red: #FF6961,\nyellow: #FDDA76,\nblack: #000000,\nblack band: #000000,\nblue: #8DB4D2,\ngreen: #C1E1C1,\npurple: #B19CD9,\nsilver: #EEEEEF,\nwhite: #FFFFFF,\nbrown: #836953,\nlight brown: #B5651D,\ndark turquoise: #23cddc,\norange: #FFB347,\ntan: #E9D1BF,\nviolet: #B490B0,\npink: #FFD1DC,\ngrey: #E0E0E0,\nsky: #96BDC6,\npale leaf: #CCD4BF,\nlight blue: #b1c5d4,\ndark grey: #aca69f,\nbeige: #EBE6DB,\nbeige band: #EED9C4,\ndark blue: #063e66,\ncream: #FFFFCC,\nlight pink: #FBCFCD,\nmint: #bedce3,\ndark gray: #3A3B3C,\nrosy brown: #c4a287,\nlight grey:#D3D3D3,\ncopper: #B87333,\nrose gold: #ECC5C0,\nnight blue: #151B54,\ncoral: #FF7F50,\nlight purple: #C6AEC7",
+    "filter_color1": "Gingham",
+    "filter_color2": "flannel",
+    "article_show_date": false,
+    "article_show_excerpt": true,
+    "article_show_button": true,
+    "share_facebook": true,
+    "share_pinterest": true,
+    "contact_phone_number": "+1 (888) 310-1179",
+    "contact_email": "support@viccieyewear.com",
+    "social_twitter_link": "",
+    "social_twitter_label": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/viccieyewear\/",
+    "social_facebook_label": "",
+    "social_pinterest_link": "",
+    "social_pinterest_label": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/viccieyewear\/",
+    "social_instagram_label": "",
+    "cart_notes_enable": false,
+    "discount_code_enable": false,
+    "cart_estimate_shipping": false,
+    "cart_drawer_trust_badge": "shopify:\/\/shop_images\/1526466510368_checkout-badge-removebg-preview.png",
+    "search_by_tag": true,
+    "search_by_body": true,
+    "popular_search_queries": "Cat Eye, Vintage, Readers, Oversize",
+    "wishlist_page": "swym-share-wishlist",
+    "product_compare_page": "compare",
+    "show_cookie_consent": false,
+    "cookie_consent_placement": "bottom-left",
+    "cookie_consent_theme": "white",
+    "custom_css": ".sf-topbar {\n  border-color: #eee;\n}\n[id$=\"16225125199f82d8fe\"] .section-my {\n  padding-top: 45px;\n  padding-bottom: 45px;\n  margin-bottom: 0;\n  margin-top: 0;\n}\n[id$=\"16225125199f82d8fe\"] {\n  border-top: 1px solid #eee;\n}\n.sf__font-normal {\n  font-weight: 400;\n}\n[id$=\"16225316461d1cff80\"]\n  .collection-card__info\n  h3\n  a {\n  font-weight: 400;\n  font-size: 24px;\n  line-height: 34px;\n  margin-bottom: 4px;\n}\n[id$=\"16225316461d1cff80\"]\n  .collection-card__info\n  p {\n  color: #666;\n}\n[id$=\"16225125199f82d8fe\"] .sf-icon-box__text h3 {\n  line-height: 26px;\n  font-size: 20px;\n  font-weight: 500;\n}\n@media (min-width: 1536px) {\n  [id$=\"1621243260e1af0c20\"] .slide__block-title {\n    font-size: 100px;\n    line-height: 95px;\n  }\n}\n@media (max-width: 576px) {\n  [id$=\"1621243260e1af0c20\"] a.sf__mobile-button,\n  [id$=\"162251092958fcda7c\"] .sf__btn-primary,\n  [id$=\"162251092958fcda7c\"] .sf__btn-secondary {\n    width: 100%;\n  }\n  [id$=\"16225316461d1cff80\"] .section__heading {\n    text-align: center;\n  }\n  [id$=\"16225316461d1cff80\"]\n    .collection-card__info\n    h3\n    a {\n    font-weight: 500;\n  }\n  [id$=\"16225316461d1cff80\"]\n    .collection-card__info\n    p {\n    font-size: 14px;\n    line-height: 20px;\n  }\n  [id$=\"16225125199f82d8fe\"] .sf-icon-box__text h3 {\n    font-size: 18px;\n    margin-bottom: 2px;\n  }\n}",
+    "review_app": "shopify",
+    "show_variant_swatch_image": true,
+    "bg_cart_count": "#da3f3f",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "a820a1bc-dfc4-4e61-8c8a-de23659759a6": {
+            "type": "banner",
+            "disabled": true,
+            "settings": {
+              "heading": "Eyeglasses",
+              "container": "container-fluid",
+              "banner_style": "outside",
+              "banner_image": "shopify:\/\/shop_images\/Untitled-2_0002_Layer_3.jpg",
+              "banner_link": "",
+              "banner_title": "",
+              "banner_desc": "",
+              "banner_button_text": ""
+            }
+          },
+          "1999a41a-89da-420d-bae0-b62ecb02d694": {
+            "type": "banner",
+            "disabled": true,
+            "settings": {
+              "heading": "Sunglasses",
+              "container": "inherit",
+              "banner_style": "outside",
+              "banner_image": "shopify:\/\/shop_images\/Untitled-2_0000_5.jpg",
+              "banner_link": "",
+              "banner_title": "New collection",
+              "banner_desc": "",
+              "banner_button_text": "Shop now"
+            }
+          },
+          "0c049e98-d406-4e2d-850d-246cce698f6f": {
+            "type": "collection-list",
+            "settings": {
+              "heading": "Sunglasses",
+              "container": "inherit",
+              "collection_1": "sunglasses",
+              "image_1": "shopify:\/\/shop_images\/67.jpg",
+              "collection_2": "mens-sunglasses",
+              "image_2": "shopify:\/\/shop_images\/Untitled-2_0004_Layer_1.jpg",
+              "collection_3": "",
+              "collection_4": "",
+              "collection_5": ""
+            }
+          },
+          "7e424dfd-98f2-42b0-ae62-628b680f390c": {
+            "type": "banner",
+            "disabled": true,
+            "settings": {
+              "heading": "Blue Light",
+              "container": "inherit",
+              "banner_style": "outside",
+              "banner_image": "shopify:\/\/shop_images\/Untitled-2_0003_Layer_2.jpg",
+              "banner_link": "",
+              "banner_title": "New collection",
+              "banner_desc": "",
+              "banner_button_text": "Shop now"
+            }
+          },
+          "c9843dcf-0a7b-4b42-9dce-9d89036a459c": {
+            "type": "banner",
+            "disabled": true,
+            "settings": {
+              "heading": "Eyeglasses",
+              "container": "inherit",
+              "banner_style": "outside",
+              "banner_image": "shopify:\/\/shop_images\/Untitled-1_0001_25.jpg",
+              "banner_link": "",
+              "banner_title": "",
+              "banner_desc": "",
+              "banner_button_text": "Shop now"
+            }
+          },
+          "f34c8d75-76de-498f-8e64-16dd05dacab4": {
+            "type": "collection-list",
+            "settings": {
+              "heading": "Eyeglasses",
+              "container": "inherit",
+              "collection_1": "eyeglasses",
+              "image_1": "shopify:\/\/shop_images\/Untitled-2_0002_Layer_3.jpg",
+              "collection_2": "eyeglasses",
+              "image_2": "shopify:\/\/shop_images\/Untitled-1_0001_25.jpg",
+              "collection_3": "",
+              "collection_4": "",
+              "collection_5": ""
+            }
+          },
+          "f2d69816-2164-4e24-a282-9555050f2ec9": {
+            "type": "collection-list",
+            "settings": {
+              "heading": "Blue Light",
+              "container": "inherit",
+              "collection_1": "women-blue-light",
+              "image_1": "shopify:\/\/shop_images\/19DXqyyw.jpg",
+              "collection_2": "men-blue-light",
+              "collection_3": "blue-light",
+              "collection_4": "",
+              "collection_5": ""
+            }
+          },
+          "5e153016-a9d7-46c9-a10e-30d16446793d": {
+            "type": "topbar",
+            "settings": {
+              "show_divider": true,
+              "show_phone_numb": true,
+              "show_email": false,
+              "show_social_links": false,
+              "show_stores_page": false,
+              "show_currency_switcher": true,
+              "show_language_switcher": false,
+              "alert_message": "<span>Introducing Our New Line  |  <a class=\"sf__text-link  ml-1 underline\" href=\"#\">Discover Now<\/a><span><\/span><\/span>"
+            }
+          },
+          "5b9aec5f-b955-4765-9a87-1962d613e909": {
+            "type": "custom_html",
+            "settings": {
+              "heading": "Home",
+              "container": "container",
+              "html": ""
+            }
+          },
+          "31481022-f698-4968-bf06-3c24f36b09e7": {
+            "type": "product-list",
+            "settings": {
+              "heading": "Products",
+              "container": "container-fluid",
+              "stretch_width": false,
+              "collection": "best-sellers",
+              "limit": 6,
+              "columns": 2
+            }
+          }
+        },
+        "block_order": [
+          "a820a1bc-dfc4-4e61-8c8a-de23659759a6",
+          "1999a41a-89da-420d-bae0-b62ecb02d694",
+          "0c049e98-d406-4e2d-850d-246cce698f6f",
+          "7e424dfd-98f2-42b0-ae62-628b680f390c",
+          "c9843dcf-0a7b-4b42-9dce-9d89036a459c",
+          "f34c8d75-76de-498f-8e64-16dd05dacab4",
+          "f2d69816-2164-4e24-a282-9555050f2ec9",
+          "5e153016-a9d7-46c9-a10e-30d16446793d",
+          "5b9aec5f-b955-4765-9a87-1962d613e909",
+          "31481022-f698-4968-bf06-3c24f36b09e7"
+        ],
+        "settings": {
+          "header_design": "logo-center-menu-left",
+          "container": "container-fluid",
+          "header_sticky": true,
+          "transparent_on_top": false,
+          "logo_text": "Vicci Eyewear",
+          "logo": "shopify:\/\/shop_images\/logo3.png",
+          "logo_transparent": "shopify:\/\/shop_images\/TEST_004df670-d7b4-4aa6-be45-f849c67f3ed2.png",
+          "logo_max_width": 130,
+          "sticky_logo_max_width": 130,
+          "mobile_logo_max_width": 115,
+          "main_menu": "menu-sam-wip",
+          "secondary_menu": "",
+          "mobile_menu": "",
+          "uppercase_parent_level": true,
+          "search": "show_icon",
+          "show_account_icon": true,
+          "show_cart_icon": true,
+          "show_wishlist_icon": true,
+          "show_compare_icon": false,
+          "show_currency_switcher": false,
+          "show_language_switcher": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "7b0bf4c6-3873-4222-b8d6-ce009e710078": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Subscribe",
+              "description": "Enter your email below to be the first to know about new collections and product launches.",
+              "email_placeholder": "Enter your email",
+              "form_style": "bordered",
+              "show_social": true,
+              "width": "25%"
+            }
+          },
+          "5130cea9-3ab9-4771-b4f3-a3961a0228f7": {
+            "type": "spacing",
+            "settings": {
+              "width": "25%"
+            }
+          },
+          "49e72833-c68f-4a7b-ab64-3ef0cae99bcb": {
+            "type": "menu",
+            "settings": {
+              "menu": "new-footer-menu",
+              "title": "Information",
+              "width": "25%"
+            }
+          },
+          "46e49290-1e9e-4595-81b6-c62058280f48": {
+            "type": "menu",
+            "settings": {
+              "menu": "footer",
+              "title": "Service",
+              "width": "25%"
+            }
+          },
+          "93571032-b171-4c66-8b3e-96cd91946363": {
+            "type": "our_store",
+            "settings": {
+              "title": "Questions?",
+              "description": "<p>134 South Dixie Highway Suite 208<\/p><p>Hallandale Beach, Fl 33009<\/p>",
+              "show_email": true,
+              "show_phone": true,
+              "show_socials_link": false,
+              "width": "25%"
+            }
+          }
+        },
+        "block_order": [
+          "7b0bf4c6-3873-4222-b8d6-ce009e710078",
+          "5130cea9-3ab9-4771-b4f3-a3961a0228f7",
+          "49e72833-c68f-4a7b-ab64-3ef0cae99bcb",
+          "46e49290-1e9e-4595-81b6-c62058280f48",
+          "93571032-b171-4c66-8b3e-96cd91946363"
+        ],
+        "settings": {
+          "design": "footer-1",
+          "container": "container-fluid",
+          "bordered": false,
+          "copyright": "© Vicci Eyewear 2021",
+          "show_currency_selector": false,
+          "show_language_selector": false,
+          "show_social_links": false,
+          "show_payment_icons": true,
+          "payment_icons_width": 300
+        }
+      },
+      "annoucement": {
+        "type": "annoucement",
+        "settings": {
+          "show_announcement": false,
+          "homepage_only": true,
+          "show_close": true,
+          "message": "<span class=\"font-medium\" style=\"font-size: 15px;\">Free Delivery on orders over £120. Don’t miss discount.<\/span>",
+          "message_link": "",
+          "show_divider": false
+        }
+      },
+      "mobile-sticky-bar": {
+        "type": "mobile-sticky-bar",
+        "settings": {
+          "show_mobile_sticky": true,
+          "show_home_icon": false,
+          "show_collection_icon": false,
+          "show_cart_icon": true,
+          "show_search_icon": true,
+          "show_account_icon": false,
+          "show_wishlist_icon": true
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "5038451100865107764": {
+        "type": "shopify:\/\/apps\/product-filter-search\/blocks\/boost-pfs\/7fc998ae-a150-4367-bab8-505d8a4503f7",
+        "disabled": false,
+        "settings": {}
+      },
+      "16114465257489415219": {
+        "type": "shopify:\/\/apps\/product-filter-search\/blocks\/boost-pfs-style\/7fc998ae-a150-4367-bab8-505d8a4503f7",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}

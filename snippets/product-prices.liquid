@@ -1,0 +1,33 @@
+{% assign blue_light_product = false %}
+{% assign eye_glass_product = false %}
+{% assign sunglass_product = false %}
+
+{% if collection.url contains 'eyeglasses' or collection.url contains 'optical' %}
+{% assign eye_glass_product = true %}
+{% endif %}
+
+{% if collection.url contains 'blue-light'%}
+{% assign blue_light_product = true %}
+{% endif %}
+
+
+{% if eye_glass_product == false and blue_light_product == true %}
+{% assign blue_light_product = true %}
+{% endif %}
+
+{% if variant == blank %}
+    {% assign variant = product.selected_or_first_available_variant %}
+{% endif %}
+
+<span class="{{ compare_price_class }} sf-currency prod__compare_price mr-2 line-through text-color-secondary {% unless variant.compare_at_price > variant.price %}hidden{% endunless %}">
+  {{ variant.compare_at_price | money }}
+</span>
+<span class="{{ price_class }} prod__price sf-currency text-color-regular-price rrrrrrrr">
+ {{ variant.price | money }}
+  
+</span>
+<span  class="{{ price_class }}">
+  {% if blue_light_product == true %} includes free blue light lenses {% endif %}
+  {% if eye_glass_product == true %} includes free prescription lenses {% endif %}
+</span>
+

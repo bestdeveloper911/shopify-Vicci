@@ -1,0 +1,95 @@
+
+{%- assign settings = section.settings -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+{% if section.settings.meta_content1 %}
+  {% if product.metafields.my_fields.product_meta_show == true%}
+  <section
+    id="sf__img-with-text-{{ section.id }}"
+    class="image__with-text image__with-text--{{ section.id }}"
+
+    style="background-color: {{ section.settings.background_color }};"
+    >
+    <div class="container-fluid section-my meta-section " style="--column-gap: 100px; --row-gap: 50px; --column-gap-mobile: 30px;">
+        <div class="sf-custom__grid flex flex-wrap ">
+          <div class="sf-custom__block  sf w-full lg:w-5/12">
+            <div class="image__box sf__hover-scale-up relative">
+              {% if product.metafields.my_fields.product_addition_image_1 != blank%}
+              {{product.metafields.my_fields.product_addition_image_1 | media_tag: image_size: "1024x"}}
+              {% endif %}
+            </div>
+          </div>
+          <div class="sf-custom__block flex items-center w-full lg:w-7/12 px-0">
+            <div class="content__box w-full text-left">
+              
+                <h3 class="content__heading rte text-2xl md:text-5xl lg:text-5xl  mb-4 lg:mb-6">The perfect fit</h3>
+                {% if product.metafields.my_fields.product_addition_content_1 != blank%}
+                  <div class="mb-6 lg:mb-8 text-color-subtext rte prose"><p>{{product.metafields.my_fields.product_addition_content_1}}</p></div>
+                {%endif%}
+                {% if product.metafields.my_fields.product_size_guide != blank%}
+                <a href="#" class="sf__btn sf__btn-link sf__btn-large pdp_modal_popup">{{product.metafields.my_fields.product_size_guide}}</a>
+                {%endif%}
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <script>
+    
+  </script>
+  {% endif %}
+{% endif %}
+{% schema %}
+    {
+        "name": "Product meta Section 1",
+        "settings": [
+            {
+              "type": "checkbox",
+              "id": "meta_content1",
+              "label": "Show Meta Content",
+              "default": true
+            },
+            {
+              "type": "select",
+              "id": "container",
+              "label": "Container type",
+              "default": "container-fluid",
+              "options": [
+                  {
+                      "value": "container-fluid",
+                      "label": "Default"
+                  },
+                  {
+                      "value": "w-full",
+                      "label": "Full width"
+                  },
+                  {
+                      "value": "container",
+                      "label": "Use container box"
+                  }
+              ]
+          },
+          {
+              "type": "color",
+              "id": "background_color",
+              "label": "Background color",
+              "default": "rgba(0,0,0,0)"
+          }
+        ],
+        "templates": ["product"],
+        "presets": [
+          {
+            "name": "Product meta Section 1"
+          }
+        ]
+    }
+{% endschema %}
